@@ -28,7 +28,8 @@ int main() {
 	std::cout << "your input: " << input << std::endl;
 	std::wstring output = language->integerToWord(input);
 	wordDisplay(output);
-
+	
+	language = nullptr;
 	std::cout << std::endl;
 	
 	system("pause");
