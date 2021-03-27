@@ -1,5 +1,31 @@
 #include "utils.h"
 
+std::string prompt = "PLEASE ENTER YOUR NUMBER..\n";
+std::string reprompt = "INVALID NUMBER. PLEASE ENTER YOUR NUMBER AGAIN..\n";
+
+
+long long getInteger() {
+	while (true) {
+		std::cout << prompt;
+		long long value;
+		std::string line;
+		char trash;
+
+		if (!std::getline(std::cin, line))
+			throw std::domain_error("not cool!\n");
+			
+		std::istringstream iss(line);
+		if (iss >> value && !(iss >> trash)) {
+			return value;
+		}
+
+		iss.clear();
+		iss.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		
+		std::cout << reprompt;
+	}
+}
+
 std::wstring wstringJoin(const std::vector<std::wstring>& elements, const wchar_t* separator) {
 	switch (elements.size()) {
 		case 0: {
